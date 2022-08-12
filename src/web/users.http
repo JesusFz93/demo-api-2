@@ -1,0 +1,29 @@
+@api = http://localhost:4003/api/users
+@id = f6174d09-8d2d-4175-81f5-4c560ad5216a
+
+### get all registers
+{{api}}
+
+### get register
+{{api}}/{{id}}
+
+### create user
+POST {{api}}
+Content-Type: application/json
+
+{
+    "user_name": "fernandez",
+    "password": "123456"
+}
+
+### update user
+PUT {{api}}/{{id}}
+Content-Type: application/json
+
+{
+    "user_name": "fernandez",
+    "password": "123s456"
+}
+
+### delete register 
+DELETE {{api}}/{{id}}

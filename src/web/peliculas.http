@@ -1,0 +1,40 @@
+@api = http://localhost:4003/api/peliculas
+@id = 03d8d59f-ecbe-4e36-b5b1-84ca43f0a890
+
+### get all registers
+{{api}}
+
+### get register
+{{api}}/{{id}}
+
+### create user
+POST {{api}}
+Content-Type: application/json
+
+{
+      "title": "Bugs",
+      "year": "2021",
+      "price": 100,
+      "regions": [
+        "USA",
+        "Mexico"
+      ],
+      "category": "Aventura"
+}
+
+### update user
+PUT {{api}}/{{id}}
+Content-Type: application/json
+
+{
+    "title": "Bugs",
+      "year": "2011",
+      "price": 199,
+      "regions": [
+        "Mexico"
+      ],
+      "category": "Aventura"
+}
+
+### delete register 
+DELETE {{api}}/{{id}}

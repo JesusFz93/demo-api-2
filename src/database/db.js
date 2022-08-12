@@ -8,6 +8,7 @@ const users = [
 
 const peliculas = [
   {
+    id: "1",
     title: "El Aro",
     year: "2033",
     price: 233,
