@@ -10,7 +10,7 @@ app.use(express.json());
 // 3.ROUTES
 app.get("/", (req, res) => {
   return res.json({
-    msg: "Bienvenido al API",
+    msg: "Bienvenido al API de Demo",
     autor: process.env.AUTOR,
   });
 });
