@@ -11,6 +11,7 @@ app.use(express.json());
 app.get("/", (req, res) => {
   return res.json({
     msg: "Bienvenido al API",
+    autor: process.env.AUTOR,
   });
 });
 app.use("/api/users", require("./routes/users.routes"));
