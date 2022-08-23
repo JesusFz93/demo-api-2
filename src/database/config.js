@@ -10,7 +10,7 @@ const dbConnection = () => {
     });
 
     console.log("Base de datos conectada");
-  } catch {
+  } catch (error) {
     console.log("Error en la base de datos");
   }
 };
