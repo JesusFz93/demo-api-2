@@ -1,8 +1,11 @@
 // 1. IMPORTACIONES
 require("dotenv").config();
 const express = require("express");
+const { dbConnection } = require("./database/config");
 const app = express();
 const PORT = process.env.PORT || 4003;
+
+dbConnection();
 
 // 2.MIDDLEWARES
 app.use(express.json());
