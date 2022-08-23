@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 
 const dbConnection = () => {
-  mongoose.connect(
-    "mongodb+srv://DEMO:DEMO@cluster0.npjjx.mongodb.net/demo_db"
-  );
-
-  console.log("Base de datos conectada");
+  try {
+    mongoose.connect(process.env.MONGODB_CONNECTION);
+    console.log("Base de datos conectada");
+  } catch {
+    console.log("Error en la base de datos");
+  }
 };
 
 module.exports = {

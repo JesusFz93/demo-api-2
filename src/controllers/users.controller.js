@@ -1,11 +1,14 @@
 const { v4: uuid } = require("uuid");
 const { users } = require("../database/db");
+const User = require("../models/user");
 
-const getUsers = (req, res) => {
+const getUsers = async (req, res) => {
+  const usuarios = await User.find();
+
   return res.json({
     ok: true,
     msg: "Usuarios obtenidos",
-    data: users,
+    data: usuarios,
   });
 };
 
