@@ -1,3 +1,4 @@
+const { v4: uuid } = require("uuid");
 const { users } = require("../database/db");
 const User = require("../models/user");
 
@@ -11,21 +12,21 @@ const getUsers = async (req, res) => {
   });
 };
 
-const createUser = async (req, res) => {
-  const { email, username, password } = req.body;
+const createUser = (req, res) => {
+  const { user_name, password } = req.body;
 
   const user = {
-    email: email,
-    username: username,
+    id: uuid(),
+    user_name: user_name,
     password: password,
   };
 
-  const nuevoUsuario = await User.create(user);
+  users.push(user);
 
-  return res.status(201).json({
+  return res.json({
     ok: true,
     msg: "Usuario creado",
-    data: nuevoUsuario,
+    data: user,
   });
 };
 
