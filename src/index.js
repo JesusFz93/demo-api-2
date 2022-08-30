@@ -5,6 +5,8 @@ const { dbConnection } = require("./database/config");
 const app = express();
 const PORT = process.env.PORT || 4003;
 
+const authRoutes = require("./routes/auth.routes");
+
 dbConnection();
 
 // 2.MIDDLEWARES
@@ -20,6 +22,7 @@ app.get("/", (req, res) => {
 app.use("/api/users", require("./routes/users.routes"));
 app.use("/api/peliculas", require("./routes/peliculas.routes"));
 app.use("/api/products", require("./routes/products.routes"));
+app.use("/api/auth", authRoutes);
 
 // 4. SERVIDOR
 app.listen(PORT, () => {
