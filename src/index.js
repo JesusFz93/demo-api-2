@@ -1,5 +1,6 @@
 // 1. IMPORTACIONES
 require("dotenv").config();
+const cors = require("cors");
 const express = require("express");
 const { dbConnection } = require("./database/config");
 const app = express();
@@ -10,6 +11,7 @@ const authRoutes = require("./routes/auth.routes");
 dbConnection();
 
 // 2.MIDDLEWARES
+app.use(cors());
 app.use(express.json());
 
 // 3.ROUTES
