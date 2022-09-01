@@ -51,6 +51,46 @@ const registerUser = async (req, res) => {
   }
 };
 
+const login = async (req, res) => {
+  try {
+    const { username, password } = req.body;
+
+    const user = await User.findOne({ username });
+
+    if (!user) {
+      return res.status(404).json({
+        ok: false,
+        msg: "Error al iniciar sesion - no se encontro el usuario",
+      });
+    }
+
+    const validarPassword = bcrypt.compareSync(password, user.password);
+
+    if (!validarPassword) {
+      return res.status(400).json({
+        ok: false,
+        msg: "Error al iniciar sesion - contrasenia incorrecta",
+      });
+    }
+
+    const token = await generarJWT(user.id);
+
+    return res.json({
+      ok: true,
+      msg: "Acceso otorgado",
+      data: user,
+      token,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      ok: false,
+      msg: "Problemas del lado del servidor",
+      data: [],
+    });
+  }
+};
+
 module.exports = {
   registerUser,
+  login,
 };
