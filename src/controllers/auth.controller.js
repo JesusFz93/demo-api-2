@@ -90,7 +90,21 @@ const login = async (req, res) => {
   }
 };
 
+const verificarUsuario = async (req, res) => {
+  const { usuario } = req;
+
+  const token = await generarJWT(usuario.id);
+
+  return res.json({
+    ok: true,
+    msg: "Usuario validado",
+    data: usuario,
+    token,
+  });
+};
+
 module.exports = {
   registerUser,
   login,
+  verificarUsuario,
 };
