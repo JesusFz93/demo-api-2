@@ -9,6 +9,16 @@ const obtenerProductos = async (req, res) => {
   });
 };
 
+const obtenerProducto = async (req, res) => {
+  const { idProducto } = req.params;
+  const producto = await Product.findById(idProducto);
+
+  return res.json({
+    msg: "Producto obtenido",
+    data: producto,
+  });
+};
+
 const crearProducto = async (req, res) => {
   const { name, description, price } = req.body;
 
@@ -64,4 +74,5 @@ module.exports = {
   crearProducto,
   actualizarProducto,
   eliminarProducto,
+  obtenerProducto,
 };
